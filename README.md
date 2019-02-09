@@ -1,6 +1,6 @@
 Based on code from: https://github.com/pimoroni/mlx90640-library
 
-An ugly but working hack for the raspberry pi 3 so we can build spit thermal data out to a file to be read by other programs.
+An ugly but working hack for the raspberry pi 3 so we can spit thermal data out to a file to be read by other programs.
 
 A thermal cam can easily be implemented in python and openCV by reading this file.
 
