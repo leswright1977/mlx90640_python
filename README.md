@@ -21,7 +21,7 @@ An example program that reads data from /tmp/heatmap.csv and generates an image 
 
 There are a number of Features and hacks implemented this program:
 
-When I phsically mounted the cameras, I mounted them side by side. This means the video and thermal images do not overlap correctly. Originally I considered mounting one camera on a kinematic mount, however the simplest solution was to simply re-align them in software.
+When I physically mounted the cameras, I mounted them side by side. This means the video and thermal images do not overlap correctly. Originally I considered mounting one camera on a kinematic mount, however the simplest solution was to simply re-align them in software.
 The original video camera frame dimensions are set to 288 368 (slightly larger than 240 * 320 that we end up with)
 The video data is then cropped in opencv like this: frame = [5:325,10:250] where 5 and 10 are the offsets to crop from respectively.
 
