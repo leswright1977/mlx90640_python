@@ -4,6 +4,7 @@
 #include <fstream>
 #include <chrono>
 #include <thread>
+#include <math.h>
 #include "headers/MLX90640_API.h"
 
 
@@ -88,16 +89,13 @@ int main(int argc, char* argv[]){
 
         state = !state;
         printf("State: %d \n", state);
-		try{
+
 		std::cout << "Trying for a frame\n";
         int t = MLX90640_GetFrameData(MLX_I2C_ADDR, frame);
 		std::cout << "Frame status: ";
 		std::cout << t;
 		std::cout << "\n";
-		} catch (int e) {
-			std::cout << "Exception\n";
-     		std::cout << e;
-   		}
+
 		printf("Frame retrieved\n");
         MLX90640_InterpolateOutliers(frame, eeMLX90640);
         eTa = MLX90640_GetTa(frame, &mlx90640);
@@ -117,7 +115,8 @@ int main(int argc, char* argv[]){
 		            if(val > 99.99) val = 99.99;
 					counter++;
 					//std::cout << val; //print the val
-
+					val = roundf(val * 100) / 100;  //round to 2 dp
+					//val = roundf(val); //just round
 					outfile << val;
 					//std::this_thread::sleep_for(std::chrono::microseconds(50)); //chill...
 					//std::cout << "data write: "; //print the val
