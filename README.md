@@ -6,6 +6,8 @@ A thermal cam can easily be implemented in python and openCV by reading this fil
 
 ![Screenshot](media/therm.png)
 
+**Above:** Screenshot of myself having got up from the sofa. Note the thermal signature left behind.
+
 **mlx90640_driver.cpp**
 
 When compiled, the executable can be called with: sudo ./mlx90640_driver 8
