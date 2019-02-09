@@ -4,9 +4,9 @@ An ugly but working hack for the raspberry pi 3 so we can build spit thermal dat
 
 A thermal cam can easily be implemented in python and openCV by reading this file.
 
-![Screenshot](media/thermal.png)
+![Screenshot](media/therm.png)
 
-mlx90640_driver.cpp
+**mlx90640_driver.cpp**
 
 When compiled, the executable can be called with: sudo ./mlx90640_driver 8
 Where 8 is the required FPS (4,8 and 16 work) 8 FPS is optimal
@@ -15,7 +15,7 @@ This program continually overwrites frame data to /tmp/heatmap.csv, where it can
 
 Note: Modify /etc/fstab to mount /tmp in to RAM, else this program will hammer your SD card!
 
-thermalcam.py
+**thermalcam.py**
 
 An example program that reads data from /tmp/heatmap.csv and generates an image from it.
 
@@ -27,9 +27,22 @@ The video data is then cropped in opencv like this: frame = [5:325,10:250] where
 
 Ocassionally data is being written whilst we are trying to read and a read error occurs, in that case the last good frame is read in, rather than just dropping the data which is visually annoying.
 
-For an as of yet undetermined reason i2C randomly hangs on the raspberry pi 3, which means the program can no longer retrieve i2c data! Fortunately it turns out that if we merely probe the i2c bus, suddenly everythng wakes back up again.The python script checks to see if the current frame of thermal data is different from the last one. If it is not, it just probes the i2c bus at 0x33
+For an as of yet undetermined reason i2C randomly hangs on the raspberry pi 3, which means the program can no longer retrieve i2c data! Fortunately it turns out that if we merely probe the i2c bus, suddenly everythng wakes back up again.The python script checks to see if the current frame of thermal data is different from the last one. If it is not, it just probes the i2c bus at 0x33.
 
-Thermal data is bicubc interpolated to give an impression 
+Thermal data is cubc interpolated to give an impression of a higher resolution. The sensor is only 32 by 24 and is scaled to 320 by 240.
+
+The visible and thermal images are combined to provide a meamingful image. Before this occurs edges in the visibe image are enahnced to aid viewing.
+
+Keys:
+
+a & z: Alter nmin (normalization limits) changes color mapping. Lower nmin reduces background thermal noise displayed.
+
+s & x: Alters nmax (normalization limits) changes upper limit color mapping.
+
+d & c: Alters the alpha ratio between the Thermal and the video image.
+
+
+
 
 
 
