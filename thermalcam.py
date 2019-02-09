@@ -67,7 +67,6 @@ for frame in camera.capture_continuous(rawCapture, format="rgb", use_video_port=
 				index+=1
 		heatmap = cv2.flip(heatmap, -1 ) #flip heatmap to match image
 		prev_heatmap = heatmap #save the heatmap in case we get a data miss
-		conMiss = 0 #we saw a frame so reset consecitive miss
 	
 	else:
 		print("Data miss...Loading previous thermal image")
