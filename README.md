@@ -27,7 +27,7 @@ The video data is then cropped in opencv like this: frame = [5:325,10:250] where
 
 Ocassionally data is being written whilst we are trying to read and a read error occurs, in that case the last good frame is displayed, rather than just dropping it which is visually annoying.
 
-For an as of yet undetermined reason i2C randomly hangs on the raspberry pi 3, which means the program can no longer retrieve i2c data! Fortunately it turns out that if we merely probe the i2c bus, suddenly everythng wakes back up again.The python script checks to see if the current frame of thermal data is different from the last one. If it is not, it just probes the i2c bus at 0x33.
+For an as of yet undetermined reason i2C randomly hangs on the raspberry pi 3, which means the program can no longer retrieve i2c data! Fortunately it turns out that if we merely probe the i2c bus, suddenly everything wakes back up again.The python script checks to see if the current frame of thermal data is different from the last one. If it is not, it just probes the i2c bus at 0x33 (rather than the whole bus which is slow!).
 
 Thermal data is cubic interpolated to give an impression of a higher resolution. The sensor is only 32 by 24 and is scaled to 320 by 240.
 
