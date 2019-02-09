@@ -21,11 +21,11 @@ An example program that reads data from /tmp/heatmap.csv and generates an image 
 
 There are a number of Features and hacks implemented this program:
 
-When I phsically mounted the cameras, I moutned them side by side. This means the video and thermal images do not overlap correctly. Originally I considered mounting one camera on a kinematic mount, however the simplest and obvious solution was to simply re-align them in software.
-The original video camera frame dimensions are set to 288,260 (slightly larger than 240 * 320 that we end up with)
+When I phsically mounted the cameras, I mounted them side by side. This means the video and thermal images do not overlap correctly. Originally I considered mounting one camera on a kinematic mount, however the simplest solution was to simply re-align them in software.
+The original video camera frame dimensions are set to 288 368 (slightly larger than 240 * 320 that we end up with)
 The video data is then cropped in opencv like this: frame = [5:325,10:250] where 5 and 10 are the offsets to crop from respectively.
 
-Ocassionally data is being written whilst we are trying to read and a read error occurs, in that case the last good frame is read in, rather than just dropping the data which is visually annoying.
+Ocassionally data is being written whilst we are trying to read and a read error occurs, in that case the last good frame is displayed, rather than just dropping it which is visually annoying.
 
 For an as of yet undetermined reason i2C randomly hangs on the raspberry pi 3, which means the program can no longer retrieve i2c data! Fortunately it turns out that if we merely probe the i2c bus, suddenly everythng wakes back up again.The python script checks to see if the current frame of thermal data is different from the last one. If it is not, it just probes the i2c bus at 0x33.
 
