@@ -33,6 +33,8 @@ Thermal data is cubic interpolated to give an impression of a higher resolution.
 
 The visible and thermal images are combined to provide a meamingful image. Before this occurs edges in the visibe image are enahnced to aid viewing.
 
+The temperature displayed is that of the area under the crosshairs.
+
 Keys:
 
 a & z: Alter nmin (normalization limits) changes color mapping. Lower nmin reduces background thermal noise displayed.
