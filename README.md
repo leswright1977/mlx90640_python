@@ -33,7 +33,7 @@ For an as of yet undetermined reason i2C randomly hangs on the raspberry pi 3, w
 
 Thermal data is cubic interpolated to give an impression of a higher resolution. The sensor is only 32 by 24 and is scaled to 320 by 240.
 
-The visible and thermal images are combined to provide a meamingful image. Before this occurs edges in the visibe image are enahnced to aid viewing.
+The visible and thermal images are combined to provide a meamingful image. Before this occurs edges in the visible image are enhanced to aid viewing.
 
 The temperature displayed is that of the area under the crosshairs.
 
